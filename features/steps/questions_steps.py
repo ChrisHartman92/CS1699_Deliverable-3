@@ -6,7 +6,6 @@ category = ''
 sentences = []
 article = ''
 subject = ''
-number = 0
 
 @given('the user enters an article with category {text}')
 def set_sent(context, text):
@@ -25,12 +24,6 @@ def set_file(context, text):
 	sent_file.close()
 	pass
 
-@given('the number of questions is {d}')
-def set_num(context, d):
-	global number
-	number = d
-	assert d == '5'
-
 @given('the article is about {text}')
 def set_subject(context, text):
 	global subject 
@@ -44,10 +37,9 @@ def set_run(context):
 	#print subject
 	pass
 
-@then('{d} questions from the category {text} will be returned')
-def set_end(context, d, text):
+@then('questions from the category {text} will be returned')
+def set_end(context, text):
 		
-	assert int(number) == (int(d) + 1)
 	canarr = []
 	if(text == 'person'):
 		canarr.append('On what date was ' + subject + ' born?')
@@ -73,7 +65,7 @@ def set_end(context, d, text):
 	testarr = []
 	holder = []
 	holder = askfunc.getClassification(article, sentences)
-	testarr = askfunc.printQuests(int(number),holder)
+	testarr = askfunc.printQuests(5,holder)
 	
 	for x in range(0,4):
 		assert testarr[x] == canarr[x]

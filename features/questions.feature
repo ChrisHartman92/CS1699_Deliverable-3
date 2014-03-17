@@ -1,4 +1,4 @@
-Feature: Relevant Questions
+Feature: Category of Questions Asked 
 As a user
 I want to be able to submit different types of articles
 So that I can have relevent questions shown to me

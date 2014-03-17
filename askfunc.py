@@ -61,15 +61,19 @@ def instrumentQuest(sentences):
 	We can also make sure that classify.classify_article() returns what it should based on what it is fed.
 '''
 def getClassification(article, sentences):
- classification=classify.classify_article(article)
- if classification == 'person':
-  return personQuest(sentences)
- elif classification == 'language':
-  return languageQuest(sentences)
- elif classification == 'city':
-  return cityQuest(sentences)
- elif classification == 'instrument':
-  return instrumentQuest(sentences)
+	if (len(sentences) == 0):
+		errarr = []
+		errarr.append("There were no sentences found")
+		return errarr
+	classification=classify.classify_article(article)
+	if classification == 'person':
+		return personQuest(sentences)
+	elif classification == 'language':
+		return languageQuest(sentences)
+	elif classification == 'city':
+		return cityQuest(sentences)
+	elif classification == 'instrument':
+		return instrumentQuest(sentences)
 
 def fappend(base,item) :
   base+=item
@@ -77,6 +81,9 @@ def fappend(base,item) :
 
 def printQuests(nquestions,cannedarray) :
 	returnarray = []
+	if (nquestions <0):
+		returnarray.append("Invalid number of questions entered")
+		return returnarray
 	for i in range(1,nquestions) :
 		print cannedarray[i-1]
 		returnarray.append(cannedarray[i-1])

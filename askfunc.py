@@ -2,6 +2,8 @@ import classify
 import evaluate
 import re
 import nltk
+
+answers = False
 '''
 	A possible unit test for these four functions found below would be to compare the cannedarray before and after the array. Before should be empty, after should be not.
 	We should probably also check to make sure all underscores are replaced.
@@ -113,3 +115,7 @@ def standardize(vstring):
 	vstring=vstring.strip()
 	vstring=vstring.replace(vstring[0],vstring[0].lower())
 	return vstring
+
+def answerQuests(n):
+	ansarray = []
+	return ansarray
